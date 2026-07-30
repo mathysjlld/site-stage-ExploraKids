@@ -102,6 +102,20 @@ met pièces/diamants à 99999 et affiche des boutons d'accès rapide. Logique da
 `AppContext.tsx` (`toggleCheatCode`) et UI dans `dashboard/page.tsx`. **Outil de test interne** —
 ne pas exposer côté utilisateur final. Resaisir `7194` restaure les vraies valeurs sauvegardées.
 
+## Identité légale & paiement
+
+- **`src/lib/editeur.ts` est la source unique** de l'identité de l'éditeur (nom, SIRET, adresse,
+  contact, mention de TVA). Les pages `mentions-legales/`, `cgv/`, `politique-confidentialite/`
+  et l'expéditeur Brevo la lisent — ne jamais réécrire ces valeurs en dur dans une page.
+- Le **vendeur déclaré aux CGV doit être celui qui encaisse** : `editeur.ts` et le compte
+  Stripe basculent ensemble, jamais l'un sans l'autre.
+- **`scripts/migrate-stripe.mjs`** recrée produit, prix 7 €/mois, portail client et webhook sur
+  un compte Stripe neuf (`node scripts/migrate-stripe.mjs --cle sk_… --site <url>`). Idempotent.
+- Le client Stripe de `src/lib/stripe-server.ts` est **volontairement paresseux** (proxy) :
+  l'instancier au chargement du module ferait échouer le build sans `STRIPE_SECRET_KEY`.
+- `public.abonnements` n'a **aucune policy d'écriture** : seul le webhook (service role) y écrit,
+  le client se contente de lire. Le statut premium ne doit jamais venir du navigateur.
+
 ## Secrets
 
 `.claude/settings.local.json` contient une clé `FAL_API_KEY` — fichier local, ne pas committer de secrets.
