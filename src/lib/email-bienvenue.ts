@@ -3,10 +3,14 @@
 // erreur, on log et on continue — le paiement et le premium ne dépendent
 // jamais de l'envoi du mail.
 import { SITE_URL } from "./stripe-server";
+import { EMAIL_CONTACT } from "./editeur";
 
+// L'expéditeur suit l'identité de l'éditeur (src/lib/editeur.ts).
+// ⚠️ Une fois le domaine repris, Brevo doit authentifier lesmondesdusavoir.fr
+// (SPF/DKIM) : sans cela, un expéditeur en @gmail.com part en spam.
 const EXPEDITEUR = {
   name: "Les mondes du Savoir",
-  email: "kaidenvialle@gmail.com",
+  email: EMAIL_CONTACT,
 };
 
 export async function envoyerEmailBienvenue(destinataire: string) {

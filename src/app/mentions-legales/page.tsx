@@ -1,5 +1,14 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import {
+  ADRESSE,
+  DIRECTEUR_PUBLICATION,
+  EMAIL_CONTACT,
+  LIEN_CONTACT,
+  MENTION_TVA,
+  NOM_EDITEUR,
+  SIRET,
+} from "@/lib/editeur";
 
 export const metadata: Metadata = {
   title: "Mentions légales — Les mondes du Savoir",
@@ -31,20 +40,18 @@ export default function MentionsLegalesPage() {
           </p>
           <ul className="mt-2 list-disc pl-6 space-y-1">
             <li>
-              Dénomination / exploitant : <strong>Kaïden Zoghlami Vialle, entrepreneur individuel</strong>{" "}
+              Dénomination / exploitant : <strong>{NOM_EDITEUR}</strong>{" "}
               (service co-créé avec Mathys Julliand)
             </li>
             <li>
-              Numéro SIRET : <strong>890&nbsp;831&nbsp;415&nbsp;00025</strong>
+              Numéro SIRET : <strong>{SIRET}</strong>
             </li>
-            <li>TVA : non applicable, article 293&nbsp;B du Code général des impôts</li>
-            <li>
-              Adresse : 172 rue Charles Germain, 69400 Villefranche-sur-Saône, France
-            </li>
+            <li>{MENTION_TVA}</li>
+            <li>Adresse : {ADRESSE}</li>
             <li>
               Adresse e-mail :{" "}
-              <a className="text-teal-600 hover:underline" href="mailto:kaidenvialle@gmail.com">
-                kaidenvialle@gmail.com
+              <a className="text-teal-600 hover:underline" href={LIEN_CONTACT}>
+                {EMAIL_CONTACT}
               </a>
             </li>
           </ul>
@@ -53,10 +60,10 @@ export default function MentionsLegalesPage() {
         <div>
           <h2 className="text-xl font-bold text-teal-700">2. Directeur de la publication</h2>
           <p className="mt-2">
-            Le directeur de la publication est <strong>Kaïden Zoghlami Vialle</strong>, co-éditeur du service, joignable
+            Le directeur de la publication est <strong>{DIRECTEUR_PUBLICATION}</strong>, co-éditeur du service, joignable
             à l&apos;adresse{" "}
-            <a className="text-teal-600 hover:underline" href="mailto:kaidenvialle@gmail.com">
-              kaidenvialle@gmail.com
+            <a className="text-teal-600 hover:underline" href={LIEN_CONTACT}>
+              {EMAIL_CONTACT}
             </a>
             .
           </p>
@@ -139,8 +146,8 @@ export default function MentionsLegalesPage() {
           <p className="mt-2">
             Les présentes mentions légales sont régies par le droit français. Pour toute question, vous pouvez
             écrire à{" "}
-            <a className="text-teal-600 hover:underline" href="mailto:kaidenvialle@gmail.com">
-              kaidenvialle@gmail.com
+            <a className="text-teal-600 hover:underline" href={LIEN_CONTACT}>
+              {EMAIL_CONTACT}
             </a>
             .
           </p>

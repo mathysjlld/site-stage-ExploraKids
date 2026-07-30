@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import { EMAIL_CONTACT, LIEN_CONTACT, MENTION_TVA, NOM_EDITEUR, SIRET } from "@/lib/editeur";
 
 export const metadata: Metadata = {
   title: "Conditions générales de vente — Les mondes du Savoir",
@@ -38,15 +39,15 @@ export default function CgvPage() {
         <div>
           <h2 className="text-xl font-bold text-teal-700">Article 2 — Identité du vendeur</h2>
           <p className="mt-2">
-            Le Service est édité et commercialisé par <strong>Kaïden Zoghlami Vialle, entrepreneur
-            individuel</strong>, immatriculé sous le numéro <strong>SIRET 890&nbsp;831&nbsp;415&nbsp;00025</strong>{" "}
+            Le Service est édité et commercialisé par <strong>{NOM_EDITEUR}</strong>, immatriculé
+            sous le numéro <strong>SIRET {SIRET}</strong>{" "}
             (voir les{" "}
             <Link href="/mentions-legales" className="text-teal-600 hover:underline">
               mentions légales
             </Link>
             ). Contact&nbsp;:{" "}
-            <a className="text-teal-600 hover:underline" href="mailto:kaidenvialle@gmail.com">
-              kaidenvialle@gmail.com
+            <a className="text-teal-600 hover:underline" href={LIEN_CONTACT}>
+              {EMAIL_CONTACT}
             </a>
             .
           </p>
@@ -72,8 +73,7 @@ export default function CgvPage() {
         <div>
           <h2 className="text-xl font-bold text-teal-700">Article 4 — Prix</h2>
           <p className="mt-2">
-            L&apos;abonnement Famille est proposé au prix de <strong>7&nbsp;€ par mois</strong> (TVA non
-            applicable, article 293&nbsp;B du Code général des impôts). Ce prix inclut l&apos;accès à l&apos;ensemble des fonctionnalités de l&apos;offre pour
+            L&apos;abonnement Famille est proposé au prix de <strong>7&nbsp;€ par mois</strong> ({MENTION_TVA}). Ce prix inclut l&apos;accès à l&apos;ensemble des fonctionnalités de l&apos;offre pour
             un foyer. Le prix applicable est celui affiché au moment de la souscription. L&apos;éditeur se réserve
             le droit de modifier ses tarifs&nbsp;; toute évolution sera communiquée au Client à l&apos;avance et ne
             s&apos;appliquera qu&apos;aux échéances postérieures, le Client restant libre de résilier.
@@ -108,8 +108,8 @@ export default function CgvPage() {
             Code de la consommation, le Client peut <strong>résilier à tout moment</strong>, sans frais ni
             justification, depuis la page «&nbsp;Abonnement&nbsp;» du site (bouton «&nbsp;Gérer mon
             abonnement&nbsp;») ou par simple demande à{" "}
-            <a className="text-teal-600 hover:underline" href="mailto:kaidenvialle@gmail.com">
-              kaidenvialle@gmail.com
+            <a className="text-teal-600 hover:underline" href={LIEN_CONTACT}>
+              {EMAIL_CONTACT}
             </a>
             . La résiliation prend effet à la fin de la période mensuelle en cours&nbsp;; l&apos;accès premium
             reste actif jusqu&apos;à cette échéance et aucun nouveau prélèvement n&apos;intervient ensuite.
@@ -128,8 +128,8 @@ export default function CgvPage() {
             paiement avant validation. S&apos;il exerce sa rétractation dans le délai de 14 jours, le Client est
             remboursé au prorata de la période restant à courir. Il peut par ailleurs résilier à tout moment dans
             les conditions de l&apos;article 7. La demande de rétractation s&apos;exerce par e-mail à{" "}
-            <a className="text-teal-600 hover:underline" href="mailto:kaidenvialle@gmail.com">
-              kaidenvialle@gmail.com
+            <a className="text-teal-600 hover:underline" href={LIEN_CONTACT}>
+              {EMAIL_CONTACT}
             </a>
             .
           </p>
@@ -180,8 +180,8 @@ export default function CgvPage() {
           <h2 className="text-xl font-bold text-teal-700">Article 13 — Réclamations</h2>
           <p className="mt-2">
             Toute réclamation peut être adressée à{" "}
-            <a className="text-teal-600 hover:underline" href="mailto:kaidenvialle@gmail.com">
-              kaidenvialle@gmail.com
+            <a className="text-teal-600 hover:underline" href={LIEN_CONTACT}>
+              {EMAIL_CONTACT}
             </a>
             . Nous nous engageons à y répondre dans les meilleurs délais.
           </p>
@@ -194,8 +194,8 @@ export default function CgvPage() {
             gratuitement à un médiateur de la consommation en vue de la résolution amiable d&apos;un litige,
             après avoir tenté de le résoudre directement avec l&apos;éditeur. Les coordonnées du médiateur
             compétent sont communiquées à tout Client qui en fait la demande à{" "}
-            <a className="text-teal-600 hover:underline" href="mailto:kaidenvialle@gmail.com">
-              kaidenvialle@gmail.com
+            <a className="text-teal-600 hover:underline" href={LIEN_CONTACT}>
+              {EMAIL_CONTACT}
             </a>
             . Le Client peut également utiliser la plateforme européenne de règlement en ligne des litiges&nbsp;:{" "}
             <a

@@ -4,7 +4,28 @@
 import Stripe from "stripe";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 
-export const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string);
+// Client Stripe créé PARESSEUSEMENT. Instancié au chargement du module, il faisait
+// échouer le build dès que STRIPE_SECRET_KEY manquait à la compilation. Le proxy
+// garde l'API `stripe.customers.create(...)` inchangée côté appelants : la clé
+// n'est lue qu'au premier appel réel, donc à l'exécution d'une route.
+let clientStripe: Stripe | null = null;
+
+function getStripe(): Stripe {
+  if (!clientStripe) {
+    const cle = process.env.STRIPE_SECRET_KEY;
+    if (!cle) throw new Error("STRIPE_SECRET_KEY manquante côté serveur.");
+    clientStripe = new Stripe(cle);
+  }
+  return clientStripe;
+}
+
+export const stripe = new Proxy({} as Stripe, {
+  get(_cible, prop) {
+    const instance = getStripe();
+    const valeur = Reflect.get(instance, prop);
+    return typeof valeur === "function" ? valeur.bind(instance) : valeur;
+  },
+});
 
 export const PRICE_ID = process.env.STRIPE_PRICE_ID as string;
 

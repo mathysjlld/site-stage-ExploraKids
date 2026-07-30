@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import { EMAIL_CONTACT, LIEN_CONTACT } from "@/lib/editeur";
 
 export const metadata: Metadata = {
   title: "Politique de confidentialité — Les mondes du Savoir",
@@ -33,8 +34,8 @@ export default function PolitiqueConfidentialitePage() {
               mentions légales
             </Link>
             ). Pour toute question relative à vos données ou à l&apos;exercice de vos droits, contactez&nbsp;:{" "}
-            <a className="text-teal-600 hover:underline" href="mailto:kaidenvialle@gmail.com">
-              kaidenvialle@gmail.com
+            <a className="text-teal-600 hover:underline" href={LIEN_CONTACT}>
+              {EMAIL_CONTACT}
             </a>
             .
           </p>
@@ -137,8 +138,8 @@ export default function PolitiqueConfidentialitePage() {
             <strong>rectification</strong>, d&apos;<strong>effacement</strong>, de <strong>limitation</strong>,
             d&apos;<strong>opposition</strong> et de <strong>portabilité</strong> de vos données, ainsi que du
             droit de définir des directives relatives à leur sort après votre décès. Pour les exercer, écrivez à{" "}
-            <a className="text-teal-600 hover:underline" href="mailto:kaidenvialle@gmail.com">
-              kaidenvialle@gmail.com
+            <a className="text-teal-600 hover:underline" href={LIEN_CONTACT}>
+              {EMAIL_CONTACT}
             </a>
             . Les données stockées localement peuvent en outre être effacées à tout moment depuis l&apos;espace
             parents ou en vidant les données du navigateur.
